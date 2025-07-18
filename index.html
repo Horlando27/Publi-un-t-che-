@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Section Publication</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    h2 {
+      text-align: center;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Section Publication</h2>
+  <form id="publicationForm">
+    <input type="text" id="title" placeholder="Lohateny ny asa" required>
+    <textarea id="description" placeholder="Famaritana ny asa" required></textarea>
+    <input type="text" id="budget" placeholder="Vola aloana" required>
+    <input type="text" id="steps" placeholder="Fomba fanao" required>
+    <input type="text" id="conditions" placeholder="Fepetra takiana" required>
+    <input type="url" id="link" placeholder="Lien mankany amin'ny asa" required>
+    <button type="submit">Alefa ny asa</button>
+  </form>
+
+  <!-- Firebase & Firestore SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAC-P6WFH1kqfYQi3PdCWpy4LSUqvtX_vo",
+      authDomain: "mila-vola.firebaseapp.com",
+      projectId: "mila-vola",
+      storageBucket: "mila-vola.firebasestorage.app",
+      messagingSenderId: "690624768352",
+      appId: "1:690624768352:web:668994ef2664c5b99dd605",
+      measurementId: "G-C3FZTKQHFP"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById('publicationForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const budget = document.getElementById('budget').value.trim();
+      const steps = document.getElementById('steps').value.trim();
+      const conditions = document.getElementById('conditions').value.trim();
+      const link = document.getElementById('link').value.trim();
+
+      if (!title || !description || !budget || !steps || !conditions || !link) {
+        alert("Fenoy daholo ny saha rehetra azafady!");
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, "asa"), {
+          title,
+          description,
+          budget,
+          steps,
+          conditions,
+          link,
+          status: "active",
+          createdAt: serverTimestamp()
+        });
+
+        alert("✅ Nalefa soa aman-tsara ny asa!");
+        form.reset();
+      } catch (error) {
+        console.error("Error nandritra ny fandraisana ny asa:", error);
+        alert("⛔ Nisy olana tamin'ny fandefasana ny asa.");
+      }
+    });
+  </script>
+</body>
+  </html>
