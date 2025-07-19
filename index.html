@@ -1,110 +1,2009 @@
+
 <!DOCTYPE html>
 <html lang="mg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Section Publication</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microtâche Mila Vola</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --primary-light: #edf2ff;
+      --secondary: #3f37c9;
+      --success: #4cc9f0;
+      --warning: #f72585;
+      --danger: #e63946;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray-100: #f8f9fa;
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-400: #ced4da;
+      --gray-500: #adb5bd;
+      --gray-600: #6c757d;
+      --gray-700: #495057;
+      --gray-800: #343a40;
+      --gray-900: #212529;
+      --border-radius: 12px;
+      --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      --box-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f2f2f2;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8f9fc, #eef2f9);
+      color: var(--gray-800);
+      min-height: 100vh;
+      line-height: 1.6;
     }
-    h2 {
-      text-align: center;
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
     }
-    form {
-      max-width: 500px;
-      margin: auto;
-      padding: 20px;
+    
+    .app-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white;
+      padding: 1.5rem 0;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .app-title {
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .app-subtitle {
+      font-weight: 400;
+      opacity: 0.9;
+      font-size: 1rem;
+      max-width: 600px;
+    }
+    
+    .nav-pills {
       background: white;
+      border-radius: 50px;
+      padding: 0.5rem;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 2rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--gray-200);
+    }
+    
+    .nav-pills .nav-link {
+      border-radius: 50px;
+      padding: 0.65rem 1.5rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      transition: var(--transition);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .nav-pills .nav-link.active, 
+    .nav-pills .nav-link:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(67, 97, 238, 0.3);
+    }
+    
+    .section-card {
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
+    }
+    
+    .section-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--box-shadow-hover);
+    }
+    
+    .section-title {
+      color: var(--secondary);
+      font-weight: 700;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+    }
+    
+    .balance-card {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+      box-shadow: var(--box-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      border: none;
+    }
+    
+    .balance-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--box-shadow-hover);
+    }
+    
+    .gain-card {
+      background: linear-gradient(135deg, var(--success), #3a86ff);
+      color: white;
+    }
+    
+    .deposit-card {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+    
+    .balance-label {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .balance-amount {
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+    
+    .btn-action {
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-action::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 20px;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(25deg);
+      transition: all 0.6s;
+    }
+    
+    .btn-action:hover::after {
+      left: 120%;
+    }
+    
+    .btn-action i {
+      margin-right: 8px;
+    }
+    
+    .btn-deposit {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-deposit:hover {
+      background: var(--primary-dark);
+      color: white;
+    }
+    
+    .btn-withdraw {
+      background: var(--warning);
+      color: white;
+    }
+    
+    .btn-withdraw:hover {
+      background: #e11d74;
+      color: white;
+    }
+    
+    .btn-action:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .task-card {
+      margin-bottom: 1.25rem;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      border: none;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      border: 1px solid var(--gray-200);
+    }
+    
+    .task-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--box-shadow-hover);
+    }
+    
+    .task-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--warning);
+      color: white;
+      font-weight: 600;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      box-shadow: 0 4px 8px rgba(247, 37, 133, 0.25);
+    }
+    
+    .admin-card {
+      background: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      border: 1px solid var(--gray-200);
+    }
+    
+    .admin-header {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .request-card {
+      background: #f8f9fc;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary);
+      transition: var(--transition);
+    }
+    
+    .request-card:hover {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .request-card h6 {
+      font-weight: 600;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .request-card pre {
+      background: white;
+      padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 0.85rem;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid var(--gray-200);
+      margin-top: 0.75rem;
     }
-    input, textarea, button {
-      display: block;
+    
+    .modal-content {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--gray-200);
+    }
+    
+    .modal-header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.25rem 1.5rem;
+    }
+    
+    .modal-title {
+      font-weight: 600;
+    }
+    
+    .referral-code {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+      border: 1px dashed var(--primary);
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 1.75rem 0;
+      gap: 1.5rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 1.25rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      flex: 1;
+      transition: var(--transition);
+    }
+    
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--box-shadow-hover);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+    
+    .form-control, .form-select {
+      padding: 0.85rem 1.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--gray-300);
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.2);
+    }
+    
+    .form-label {
+      font-weight: 500;
+      color: var(--gray-700);
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 1.75rem 0;
+      margin-top: 3rem;
+      border-radius: 20px 20px 0 0;
+    }
+    
+    .loading-spinner {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+      margin-left: 10px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .firebase-status {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+    
+    .status-connected {
+      background-color: var(--success);
+      color: white;
+    }
+    
+    .status-disconnected {
+      background-color: var(--danger);
+      color: white;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem;
+      color: var(--gray-600);
+      border: 2px dashed var(--gray-300);
+      border-radius: var(--border-radius);
+      background: var(--gray-100);
+    }
+    
+    .empty-state i {
+      font-size: 3.5rem;
+      margin-bottom: 1.25rem;
+      color: var(--gray-400);
+      opacity: 0.7;
+    }
+    
+    .login-container {
+      max-width: 480px;
+      margin: 100px auto;
+      padding: 2.5rem;
+      background: white;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow-hover);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+    }
+    
+    .login-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+    }
+    
+    .login-logo {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    
+    .login-logo i {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      background: var(--primary-light);
+      width: 90px;
+      height: 90px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    
+    .login-logo h2 {
+      color: var(--secondary);
+      font-weight: 700;
+    }
+    
+    .admin-table {
       width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 1.25rem;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
     }
-    button {
-      background: #007BFF;
+    
+    .admin-table th {
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    
+    .admin-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .admin-table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .admin-table tr:nth-child(even) {
+      background-color: var(--gray-100);
+    }
+    
+    .admin-table tr:hover {
+      background-color: var(--primary-light);
+    }
+    
+    .admin-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .btn-sm {
+      padding: 0.35rem 0.75rem;
+      font-size: 0.875rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+    
+    .logout-btn {
+      background: var(--danger);
       color: white;
       border: none;
-      cursor: pointer;
+      border-radius: 50px;
+      padding: 0.65rem 1.25rem;
+      font-weight: 600;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    button:hover {
-      background: #0056b3;
+    
+    .logout-btn:hover {
+      background: #d0343f;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
     }
+    
+    .completed-task {
+      position: relative;
+      opacity: 0.85;
+    }
+    
+    .completed-task:after {
+      content: "Asa vita";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-10deg);
+      background: var(--success);
+      color: white;
+      font-weight: bold;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      z-index: 10;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .referral-section {
+      background: linear-gradient(135deg, #f8f9fc, #eef2f9);
+      padding: 1.75rem;
+      border-radius: var(--border-radius);
+      margin-bottom: 1.75rem;
+      border: 1px solid var(--gray-200);
+    }
+    
+    .referral-link {
+      display: flex;
+      gap: 10px;
+      margin-top: 1.25rem;
+    }
+    
+    .referral-link input {
+      flex: 1;
+      border-radius: 10px 0 0 10px;
+      background: white;
+    }
+    
+    .referral-link button {
+      border-radius: 0 10px 10px 0;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 1.25rem;
+      transition: var(--transition);
+    }
+    
+    .referral-link button:hover {
+      background: var(--primary-dark);
+    }
+    
+    .card-header-gradient {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 1.25rem 1.75rem;
+      border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+    }
+    
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-right: 12px;
+    }
+    
+    .social-icon {
+      font-size: 1.5rem;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    
+    .facebook { color: #3b5998; }
+    .twitter { color: #1da1f2; }
+    .instagram { color: #e1306c; }
+    .telegram { color: #0088cc; }
+    .website { color: var(--primary); }
+    .whatsapp { color: #25D366; }
+    
+    .task-type-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .social-task {
+      border-left: 4px solid #3b5998;
+    }
+    
+    .website-task {
+      border-left: 4px solid var(--primary);
+    }
+    
+    .whatsapp-btn {
+      background: #25D366 !important;
+      color: white !important;
+      border-radius: 50px;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      margin-top: 15px;
+      width: 100%;
+      justify-content: center;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    
+    .whatsapp-btn:hover {
+      background: #128C7E !important;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+    
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      border-radius: var(--border-radius);
+      background: var(--success);
+      color: white;
+      box-shadow: var(--box-shadow);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideIn 0.5s, fadeOut 0.5s 2.5s forwards;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    
+    .proof-container {
+      background: var(--primary-light);
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      margin-top: 1rem;
+      border: 1px dashed var(--primary);
+    }
+    
+    .proof-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    @media (max-width: 768px) {
+      .section-card {
+        padding: 1.5rem;
+      }
+      
+      .nav-pills {
+        padding: 0.35rem;
+      }
+      
+      .nav-pills .nav-link {
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .stats-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .app-title {
+        font-size: 1.6rem;
+      }
+      
+      .admin-table {
+        display: block;
+        overflow-x: auto;
+      }
+      
+      .login-container {
+        margin: 60px auto;
+        padding: 1.75rem;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .delayed-1 { animation-delay: 0.1s; }
+    .delayed-2 { animation-delay: 0.2s; }
+    .delayed-3 { animation-delay: 0.3s; }
   </style>
 </head>
 <body>
-  <h2>Section Publication</h2>
-  <form id="publicationForm">
-    <input type="text" id="title" placeholder="Lohateny ny asa" required>
-    <textarea id="description" placeholder="Famaritana ny asa" required></textarea>
-    <input type="text" id="budget" placeholder="Vola aloana" required>
-    <input type="text" id="steps" placeholder="Fomba fanao" required>
-    <input type="text" id="conditions" placeholder="Fepetra takiana" required>
-    <input type="url" id="link" placeholder="Lien mankany amin'ny asa" required>
-    <button type="submit">Alefa ny asa</button>
-  </form>
+  <!-- Page de connexion -->
+  <div id="loginPage" class="container">
+    <div class="login-container">
+      <div class="login-logo">
+        <i class="fas fa-tasks"></i>
+        <h2>Microtâche Mila Vola</h2>
+        <p>Plateforme pour gagner de l'argent en réalisant des microtâches</p>
+      </div>
+      
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Anarana voalohany</label>
+          <input type="text" class="form-control" id="firstName" required>
+        </div>
+        
+        <div class="mb-3">
+          <label for="securityCode" class="form-label">Teny miafina</label>
+          <input type="password" class="form-control" id="securityCode" required>
+          <div class="form-text">Admin: Rakoto12</div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100" style="background: var(--primary); border: none; padding: 0.85rem; font-weight: 600; border-radius: 10px;">
+          <i class="fas fa-sign-in-alt me-1"></i> Hiditra
+        </button>
+        
+        <div class="mt-3 text-center">
+          <p>Tsy manana kaonty? <a href="#" id="signupLink">Hisoratra anarana</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
 
-  <!-- Firebase & Firestore SDK -->
+  <!-- Page principale (cachée par défaut) -->
+  <div id="appContainer" class="app-container" style="display:none;">
+    <div class="header">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-8">
+            <h1 class="app-title">Microtâche Mila Vola</h1>
+            <p class="app-subtitle" id="welcomeMessage">Plateforme pour gagner de l'argent en réalisant des microtâches</p>
+          </div>
+          <div class="col-md-4 text-end">
+            <div class="d-flex align-items-center justify-content-end">
+              <div class="d-inline-block bg-white text-dark p-2 rounded-circle me-2">
+                <i class="fas fa-user fa-lg text-primary"></i>
+              </div>
+              <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt me-1"></i> Hivoaka
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="firebaseStatus" class="firebase-status status-connected">
+      <i class="fas fa-circle-check"></i> Firebase Connected
+    </div>
+
+    <div id="notificationArea"></div>
+
+    <div class="container">
+      <!-- Stats Section -->
+      <div class="section-card">
+        <div class="stats-container">
+          <div class="stat-item fade-in">
+            <div class="stat-number">152</div>
+            <div class="stat-label">Tâches Complétées</div>
+          </div>
+          <div class="stat-item fade-in delayed-1">
+            <div class="stat-number">78</div>
+            <div class="stat-label">Utilisateurs Actifs</div>
+          </div>
+          <div class="stat-item fade-in delayed-2">
+            <div class="stat-number">1.2M Ar</div>
+            <div class="stat-label">Gains Distribués</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="nav nav-pills justify-content-center mb-4">
+        <a class="nav-link" href="#adminSection" onclick="showSection('adminSection')"><i class="fas fa-cog me-1"></i> Admin</a>
+        <a class="nav-link active" href="#accountSection" onclick="showSection('accountSection')"><i class="fas fa-wallet me-1"></i> Compte</a>
+        <a class="nav-link" href="#tasksSection" onclick="showSection('tasksSection')"><i class="fas fa-tasks me-1"></i> Asa</a>
+        <a class="nav-link" href="#publicationSection" onclick="showSection('publicationSection')"><i class="fas fa-bullhorn me-1"></i> Publication</a>
+        <a class="nav-link" href="#settingsSection" onclick="showSection('settingsSection')"><i class="fas fa-sliders-h me-1"></i> Paramètres</a>
+      </nav>
+
+      <!-- Admin Section -->
+      <div id="adminSection" class="mb-5" style="display:none;">
+        <h4 class="section-title"><i class="fas fa-cog me-2"></i>Admin Panel</h4>
+        <div class="admin-card">
+          <h5 class="admin-header"><i class="fas fa-money-bill-wave me-2"></i>Demandes de Dépôt</h5>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Montant</th>
+                <th>Méthode</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="depotList">
+              <tr>
+                <td colspan="5" class="text-center py-4">
+                  <div class="empty-state py-0">
+                    <i class="fas fa-inbox"></i>
+                    <p>Aucune demande de dépôt en attente</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="admin-card">
+          <h5 class="admin-header"><i class="fas fa-hand-holding-usd me-2"></i>Demandes de Retrait</h5>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Montant</th>
+                <th>Frais</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="retraitList">
+              <tr>
+                <td colspan="5" class="text-center py-4">
+                  <div class="empty-state py-0">
+                    <i class="fas fa-inbox"></i>
+                    <p>Aucune demande de retrait en attente</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="admin-card">
+          <h5 class="admin-header"><i class="fas fa-check-circle me-2"></i>Soumissions de Preuves</h5>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Utilisateur</th>
+                <th>Tâche</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="submissionList">
+              <tr>
+                <td colspan="4" class="text-center py-4">
+                  <div class="empty-state py-0">
+                    <i class="fas fa-inbox"></i>
+                    <p>Aucune soumission de preuve en attente</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Compte Section -->
+      <div id="accountSection" class="mb-5">
+        <h4 class="section-title"><i class="fas fa-wallet me-2"></i>Compte</h4>
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="balance-card gain-card">
+              <div class="balance-label">Solde de Gains</div>
+              <div id="gainBalance" class="balance-amount">0 Ar</div>
+              <div class="mt-2 small">Ce solde peut être retiré</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="balance-card deposit-card">
+              <div class="balance-label">Solde de Dépôt</div>
+              <div id="depositBalance" class="balance-amount">0 Ar</div>
+              <div class="mt-2 small">Utilisé pour publier des tâches</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="d-grid gap-3 d-md-flex">
+          <button class="btn btn-action btn-deposit" data-bs-toggle="modal" data-bs-target="#depositModal">
+            <i class="fas fa-plus-circle me-1"></i> Dépôt
+          </button>
+          <button class="btn btn-action btn-withdraw" data-bs-toggle="modal" data-bs-target="#withdrawModal">
+            <i class="fas fa-minus-circle me-1"></i> Retrait
+          </button>
+        </div>
+      </div>
+
+      <!-- Tasks Section -->
+      <div id="tasksSection" class="mb-5">
+        <h4 class="section-title"><i class="fas fa-tasks me-2"></i>Asa</h4>
+        <div class="alert alert-info">
+          <i class="fas fa-info-circle me-2"></i>Complétez des tâches pour gagner de l'argent. Chaque tâche validée rapporte 50 Ar.
+        </div>
+        <div id="taskList" class="row">
+          <div class="col-12">
+            <div class="empty-state">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>Chargement des tâches disponibles...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Publication Section -->
+      <div id="publicationSection" class="mb-5" style="display:none;">
+        <h4 class="section-title"><i class="fas fa-bullhorn me-2"></i>Publication</h4>
+        <div class="section-card mb-4">
+          <form id="publishForm" class="mb-3">
+            <div class="mb-3">
+              <label class="form-label">Description de la tâche</label>
+              <textarea id="pubDescription" class="form-control mb-2" placeholder="Décrivez la tâche à réaliser" rows="3" required></textarea>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Budget (≥ 50 Ar)</label>
+                <input id="pubBudget" type="number" class="form-control" placeholder="Ex: 100" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Type de tâche</label>
+                <select id="taskType" class="form-select" required>
+                  <option value="">Choisir un type</option>
+                  <option value="social">Réseau social</option>
+                  <option value="website">Inscription site web</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="mb-3" id="socialMediaContainer" style="display:none;">
+              <label class="form-label">Réseau social</label>
+              <select id="socialMedia" class="form-select">
+                <option value="">Sélectionner un réseau</option>
+                <option value="facebook">Facebook</option>
+                <option value="twitter">Twitter</option>
+                <option value="instagram">Instagram</option>
+                <option value="telegram">Télégramme</option>
+              </select>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">URL/Information</label>
+              <input id="pubURL" type="text" class="form-control" placeholder="Lien ou référence" required>
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Conditions</label>
+              <textarea id="pubConditions" class="form-control" placeholder="Conditions à respecter" rows="2"></textarea>
+            </div>
+            
+            <button class="btn btn-primary btn-action">
+              <i class="fas fa-paper-plane me-1"></i> Publier la tâche
+            </button>
+          </form>
+        </div>
+        
+        <h5 class="mt-4 mb-3"><i class="fas fa-list me-2"></i>Mes Publications</h5>
+        <div id="publicationList" class="row">
+          <div class="col-12">
+            <div class="empty-state">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>Chargement de vos publications...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Section -->
+      <div id="settingsSection" class="mb-5">
+        <h4 class="section-title"><i class="fas fa-sliders-h me-2"></i>Paramètres</h4>
+        <div class="section-card">
+          <h5><i class="fas fa-user-friends me-2"></i>Programme de Parrainage</h5>
+          <p>Invitez vos amis et gagnez 10% de leurs gains!</p>
+          <div class="mt-3">
+            <p class="mb-1">Votre code de parrainage:</p>
+            <div class="referral-code" id="referralCode">Chargement...</div>
+          </div>
+          
+          <div class="referral-link">
+            <input type="text" class="form-control" id="referralLink" readonly>
+            <button class="btn btn-outline-primary" onclick="copyReferralLink()">
+              <i class="fas fa-copy"></i>
+            </button>
+          </div>
+          
+          <div class="mt-3">
+            <button class="btn btn-primary" onclick="shareReferral()" style="background: var(--primary); border: none; padding: 0.75rem 1.5rem; font-weight: 600; border-radius: 10px;">
+              <i class="fas fa-share-alt me-1"></i> Partager
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <!-- Deposit Modal -->
+      <div class="modal fade" id="depositModal" tabindex="-1">
+        <div class="modal-dialog">
+          <form id="depositForm" class="modal-content">
+            <div class="modal-header card-header-gradient">
+              <h5 class="modal-title"><i class="fas fa-plus-circle me-2"></i>Dépôt</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Montant (≥ 5000 Ar)</label>
+                <input id="depositAmount" type="number" class="form-control" placeholder="Ex: 10000" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Méthode de Paiement</label>
+                <select id="depositMethod" class="form-select" required>
+                  <option value="">Sélectionnez une méthode</option>
+                  <option value="Mvola">Mvola</option>
+                  <option value="Orange Money">Orange Money</option>
+                  <option value="Airtel Money">Airtel Money</option>
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary" style="background: var(--primary); border: none; padding: 0.65rem 1.25rem; font-weight: 600; border-radius: 10px;">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Withdraw Modal -->
+      <div class="modal fade" id="withdrawModal" tabindex="-1">
+        <div class="modal-dialog">
+          <form id="withdrawForm" class="modal-content">
+            <div class="modal-header card-header-gradient">
+              <h5 class="modal-title"><i class="fas fa-minus-circle me-2"></i>Retrait</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Nom Complet</label>
+                <input id="withdrawName" type="text" class="form-control" placeholder="Votre nom" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Numéro de Téléphone</label>
+                <input id="withdrawPhone" type="tel" class="form-control" placeholder="Votre numéro" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Montant (≥ 10000 Ar)</label>
+                <input id="withdrawAmount" type="number" class="form-control" placeholder="Ex: 20000" required>
+                <div class="form-text">Frais: 10% du montant</div>
+                <div class="form-text text-danger">Attention: Seul le solde de gains peut être retiré</div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary" style="background: var(--primary); border: none; padding: 0.65rem 1.25rem; font-weight: 600; border-radius: 10px;">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Proof Modal -->
+      <div class="modal fade" id="proofModal" tabindex="-1">
+        <div class="modal-dialog">
+          <form id="submitProofForm" class="modal-content">
+            <input id="taskIdHidden" type="hidden">
+            <div class="modal-header card-header-gradient">
+              <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i>Envoyer Preuve</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">Votre Identifiant</label>
+                <input id="userName" type="text" class="form-control" placeholder="Nom/Email/Instagram" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Preuve de Réalisation</label>
+                <textarea id="userProof" class="form-control" placeholder="Texte ou URL d'image" rows="3" required></textarea>
+                <div class="form-text">Fournissez un lien ou décrivez votre preuve</div>
+              </div>
+              
+              <div class="proof-container">
+                <p class="proof-title"><i class="fas fa-info-circle"></i> Envoyer une capture d'écran par WhatsApp</p>
+                <a href="https://wa.me/261384557584" target="_blank" class="btn whatsapp-btn">
+                  <i class="fab fa-whatsapp"></i> Envoyer par WhatsApp
+                </a>
+                <p class="mt-2 small">Après avoir envoyé votre capture d'écran sur WhatsApp, soumettez votre nom ci-dessus pour que nous puissions vous créditer.</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary" style="background: var(--primary); border: none; padding: 0.65rem 1.25rem; font-weight: 600; border-radius: 10px;">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="container">
+        <p class="mb-0">Microtâche Mila Vola &copy; 2023 - Plateforme de microtâches</p>
+        <p class="mb-0">Contact: support@milavola.mg | +261 34 00 000 00</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { 
+      getFirestore, collection, addDoc, getDoc, doc,
+      serverTimestamp, query, where, getDocs, setDoc,
+      updateDoc, deleteDoc, onSnapshot
+    } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyAC-P6WFH1kqfYQi3PdCWpy4LSUqvtX_vo",
       authDomain: "mila-vola.firebaseapp.com",
       projectId: "mila-vola",
-      storageBucket: "mila-vola.firebasestorage.app",
+      storageBucket: "mila-vola.appspot.com",
       messagingSenderId: "690624768352",
       appId: "1:690624768352:web:668994ef2664c5b99dd605",
       measurementId: "G-C3FZTKQHFP"
     };
 
+    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    const form = document.getElementById('publicationForm');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    // Update Firebase status
+    const firebaseStatus = document.getElementById('firebaseStatus');
+    firebaseStatus.innerHTML = '<i class="fas fa-circle-check"></i> Firebase Connected';
 
-      const title = document.getElementById('title').value.trim();
-      const description = document.getElementById('description').value.trim();
-      const budget = document.getElementById('budget').value.trim();
-      const steps = document.getElementById('steps').value.trim();
-      const conditions = document.getElementById('conditions').value.trim();
-      const link = document.getElementById('link').value.trim();
+    // Variables globales
+    let userId = "";
+    let isAdmin = false;
+    let userName = "";
 
-      if (!title || !description || !budget || !steps || !conditions || !link) {
-        alert("Fenoy daholo ny saha rehetra azafady!");
-        return;
-      }
+    // Page elements
+    const loginPage = document.getElementById('loginPage');
+    const appContainer = document.getElementById('appContainer');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const welcomeMessage = document.getElementById('welcomeMessage');
+    const taskTypeSelect = document.getElementById('taskType');
+    const socialMediaContainer = document.getElementById('socialMediaContainer');
 
-      try {
-        await addDoc(collection(db, "asa"), {
-          title,
-          description,
-          budget,
-          steps,
-          conditions,
-          link,
-          status: "active",
-          createdAt: serverTimestamp()
-        });
-
-        alert("✅ Nalefa soa aman-tsara ny asa!");
-        form.reset();
-      } catch (error) {
-        console.error("Error nandritra ny fandraisana ny asa:", error);
-        alert("⛔ Nisy olana tamin'ny fandefasana ny asa.");
+    // Gestion du type de tâche
+    taskTypeSelect.addEventListener('change', function() {
+      if (this.value === 'social') {
+        socialMediaContainer.style.display = 'block';
+      } else {
+        socialMediaContainer.style.display = 'none';
       }
     });
+
+    // Fonction pour afficher une section
+    window.showSection = (sectionId) => {
+      // Masquer toutes les sections
+      document.getElementById('adminSection').style.display = 'none';
+      document.getElementById('accountSection').style.display = 'none';
+      document.getElementById('tasksSection').style.display = 'none';
+      document.getElementById('publicationSection').style.display = 'none';
+      document.getElementById('settingsSection').style.display = 'none';
+      
+      // Afficher la section demandée
+      document.getElementById(sectionId).style.display = 'block';
+      
+      // Charger les données si nécessaire
+      if (sectionId === 'adminSection' && isAdmin) {
+        loadAdminPanel();
+      } else if (sectionId === 'tasksSection') {
+        loadTasks();
+      } else if (sectionId === 'publicationSection' && isAdmin) {
+        loadPublications();
+      }
+    };
+
+    // Vérifier si l'utilisateur est déjà connecté
+    function checkLoginStatus() {
+      const savedUser = localStorage.getItem('milaVolaUser');
+      if (savedUser) {
+        const userData = JSON.parse(savedUser);
+        userId = userData.id;
+        userName = userData.name;
+        isAdmin = userData.isAdmin;
+        
+        // Masquer la page de connexion et afficher l'application
+        loginPage.style.display = 'none';
+        appContainer.style.display = 'block';
+        
+        // Mettre à jour le message de bienvenue
+        welcomeMessage.textContent = `Bienvenue, ${userName} !`;
+        
+        // Charger l'application
+        loadApplication();
+      }
+    }
+
+    // Gestion du formulaire de connexion
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const firstName = document.getElementById('firstName').value.trim();
+      const securityCode = document.getElementById('securityCode').value;
+      
+      if (!firstName || !securityCode) {
+        alert('Ampidiro ny anarana sy ny teny miafina');
+        return;
+      }
+      
+      // Vérifier si le code d'accès est celui de l'admin
+      const adminAccess = securityCode === "Rakoto12";
+      
+      // Créer un ID utilisateur basé sur le nom
+      const userID = firstName.toLowerCase().replace(/\s+/g, '-') + '-' + Math.floor(1000 + Math.random() * 9000);
+      
+      try {
+        // Vérifier si l'utilisateur existe déjà
+        const userRef = doc(db, "users", userID);
+        const userSnap = await getDoc(userRef);
+        
+        if (userSnap.exists()) {
+          // Vérifier le mot de passe
+          const userData = userSnap.data();
+          if (userData.securityCode !== securityCode) {
+            alert('Teny miafina diso!');
+            return;
+          }
+        } else {
+          // Créer un nouvel utilisateur
+          await setDoc(userRef, {
+            name: firstName,
+            securityCode: securityCode,
+            gain: 0,
+            depot: 0,
+            createdAt: serverTimestamp(),
+            isAdmin: adminAccess,
+            completedTasks: [] // Liste des tâches complétées
+          });
+        }
+        
+        // Récupérer les informations de l'utilisateur
+        const userDoc = await getDoc(userRef);
+        const userData = userDoc.data();
+        
+        // Stocker les informations de l'utilisateur
+        userId = userID;
+        userName = userData.name;
+        isAdmin = userData.isAdmin || adminAccess;
+        
+        // Sauvegarder dans localStorage
+        localStorage.setItem('milaVolaUser', JSON.stringify({
+          id: userId,
+          name: userName,
+          isAdmin: isAdmin
+        }));
+        
+        // Mettre à jour le message de bienvenue
+        welcomeMessage.textContent = `Bienvenue, ${userName} !`;
+        
+        // Masquer la page de connexion et afficher l'application
+        loginPage.style.display = 'none';
+        appContainer.style.display = 'block';
+        
+        // Charger l'application
+        loadApplication();
+        
+      } catch (error) {
+        console.error("Erreur de connexion:", error);
+        alert("Erreur de connexion: " + error.message);
+      }
+    });
+
+    // Déconnexion
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('milaVolaUser');
+      location.reload();
+    });
+
+    // Charger l'application après connexion
+    async function loadApplication() {
+      await loadBalances();
+      await loadTasks();
+      await loadPublications();
+      document.getElementById("referralCode").textContent = userId;
+      document.getElementById('referralLink').value = window.location.href.split('?')[0] + '?ref=' + userId;
+      
+      // Gestion des sections admin/publication
+      if (isAdmin) {
+        document.getElementById('adminSection').style.display = 'none';
+        document.getElementById('publicationSection').style.display = 'none';
+      } else {
+        document.getElementById('adminSection').style.display = 'none';
+        document.getElementById('publicationSection').style.display = 'none';
+      }
+      
+      // Afficher la section Compte par défaut
+      document.getElementById('accountSection').style.display = 'block';
+      
+      // Setup real-time listeners
+      setupRealtimeListeners();
+    }
+
+    // --- Section Compte ---
+    async function loadBalances() {
+      try {
+        const userRef = doc(db, "users", userId);
+        const snap = await getDoc(userRef);
+        const data = snap.exists() ? snap.data() : { gain: 0, depot: 0 };
+        document.getElementById("gainBalance").textContent = data.gain + " Ar";
+        document.getElementById("depositBalance").textContent = data.depot + " Ar";
+      } catch (error) {
+        console.error("Error loading balances:", error);
+      }
+    }
+
+    document.getElementById("depositForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const montant = parseFloat(document.getElementById("depositAmount").value);
+      const method = document.getElementById("depositMethod").value;
+      
+      if (montant >= 5000 && method) {
+        try {
+          await addDoc(collection(db, "depot_requests"), {
+            userId, userName, montant, method,
+            status: "en attente", createdAt: serverTimestamp()
+          });
+          showNotification("Dépôt voaray! Votre demande est en cours de traitement.", "success");
+          
+          // Reset form and close modal
+          e.target.reset();
+          bootstrap.Modal.getInstance(document.getElementById('depositModal')).hide();
+        } catch (error) {
+          showNotification("Erreur lors du dépôt: " + error.message, "danger");
+        }
+      } else {
+        showNotification("Ampidiro araka ny tokony ho izy ny vola (min 5000 Ar) sy fomba fandoavana.", "warning");
+      }
+    });
+
+    document.getElementById("withdrawForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nom = document.getElementById("withdrawName").value;
+      const phone = document.getElementById("withdrawPhone").value;
+      const montant = parseFloat(document.getElementById("withdrawAmount").value);
+      
+      try {
+        // Vérifier le solde de gains
+        const userRef = doc(db, "users", userId);
+        const userSnap = await getDoc(userRef);
+        const userData = userSnap.data();
+        
+        if (montant > userData.gain) {
+          showNotification("Solde de gains insuffisant. Vous ne pouvez retirer que votre solde de gains.", "warning");
+          return;
+        }
+        
+        if (montant >= 10000) {
+          const frais = montant * 0.1;
+          await addDoc(collection(db, "retrait_requests"), {
+            userId, userName, nom, phone, montant, frais,
+            status: "en attente", createdAt: serverTimestamp()
+          });
+          showNotification("Retrait voaray! Votre demande est en cours de traitement.", "success");
+          
+          // Reset form and close modal
+          e.target.reset();
+          bootstrap.Modal.getInstance(document.getElementById('withdrawModal')).hide();
+        } else {
+          showNotification("Tsara indrindra ny ≥ 10000 Ar", "warning");
+        }
+      } catch (error) {
+        showNotification("Erreur lors du retrait: " + error.message, "danger");
+      }
+    });
+
+    // --- Section Asa (Proof) ---
+    async function loadTasks() {
+      try {
+        const list = document.getElementById("taskList");
+        list.innerHTML = '';
+        
+        // Récupérer les tâches complétées par l'utilisateur
+        const userRef = doc(db, "users", userId);
+        const userSnap = await getDoc(userRef);
+        const completedTasks = userSnap.exists() ? userSnap.data().completedTasks || [] : [];
+        
+        const q = query(collection(db, "tasks"), where("status","==","active"));
+        const snap = await getDocs(q);
+        
+        if (snap.empty) {
+          list.innerHTML = `
+            <div class="col-12">
+              <div class="empty-state">
+                <i class="fas fa-tasks"></i>
+                <p>Aucune tâche disponible pour le moment</p>
+              </div>
+            </div>
+          `;
+          return;
+        }
+        
+        list.innerHTML = '';
+        snap.forEach(docSnap => {
+          const d = docSnap.data();
+          const taskId = docSnap.id;
+          
+          // Vérifier si la tâche est déjà complétée
+          const isCompleted = completedTasks.includes(taskId);
+          
+          const el = document.createElement('div');
+          el.className = isCompleted ? 'col-md-4 mb-3 completed-task' : 'col-md-4 mb-3';
+          
+          let icon = '';
+          let typeBadge = '';
+          let borderClass = '';
+          
+          if (d.taskType === 'social') {
+            switch(d.socialMedia) {
+              case 'facebook':
+                icon = '<i class="fab fa-facebook social-icon facebook"></i>';
+                typeBadge = '<span class="task-type-badge">Facebook</span>';
+                borderClass = 'social-task';
+                break;
+              case 'twitter':
+                icon = '<i class="fab fa-twitter social-icon twitter"></i>';
+                typeBadge = '<span class="task-type-badge">Twitter</span>';
+                borderClass = 'social-task';
+                break;
+              case 'instagram':
+                icon = '<i class="fab fa-instagram social-icon instagram"></i>';
+                typeBadge = '<span class="task-type-badge">Instagram</span>';
+                borderClass = 'social-task';
+                break;
+              case 'telegram':
+                icon = '<i class="fab fa-telegram social-icon telegram"></i>';
+                typeBadge = '<span class="task-type-badge">Télégramme</span>';
+                borderClass = 'social-task';
+                break;
+            }
+          } else if (d.taskType === 'website') {
+            icon = '<i class="fas fa-globe social-icon website"></i>';
+            typeBadge = '<span class="task-type-badge">Inscription site</span>';
+            borderClass = 'website-task';
+          }
+          
+          el.innerHTML = `
+            <div class="task-card card ${borderClass}">
+              <div class="card-body">
+                ${typeBadge}
+                <span class="task-badge">${d.budget} Ar</span>
+                <h6 class="card-title">${icon} ${d.description}</h6>
+                <small class="d-block text-muted mb-2">Conditions: ${d.cond || 'Aucune'}</small>
+                <div class="mt-2">
+                  <a href="${d.url}" target="_blank" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-external-link-alt me-1"></i> Accéder à la tâche
+                  </a>
+                </div>
+                ${isCompleted ? '' : `
+                <button class='btn btn-primary w-100 mt-3' onclick='openProofModal("${taskId}")'>
+                  <i class="fas fa-paper-plane me-1"></i> Envoyer preuve
+                </button>
+                `}
+              </div>
+            </div>
+          `;
+          list.appendChild(el);
+        });
+      } catch (error) {
+        console.error("Error loading tasks:", error);
+      }
+    }
+
+    document.getElementById("submitProofForm").addEventListener("submit", async e => {
+      e.preventDefault();
+      const taskId = document.getElementById("taskIdHidden").value;
+      const name = document.getElementById("userName").value;
+      const proof = document.getElementById("userProof").value;
+      
+      if (!taskId || !name || !proof) {
+        showNotification("Ampidiro ny angona rehetra", "warning");
+        return;
+      }
+      
+      try {
+        // Vérifier si l'utilisateur a déjà soumis une preuve pour cette tâche
+        const submissionKey = `${userId}_${taskId}`;
+        const submissionRef = doc(db, "submissions", submissionKey);
+        const submissionSnap = await getDoc(submissionRef);
+        
+        if (submissionSnap.exists()) {
+          showNotification("Vous avez déjà soumis une preuve pour cette tâche.", "warning");
+          return;
+        }
+        
+        await setDoc(submissionRef, {
+          userId, userName, taskId, name, proof,
+          status: "en attente", createdAt: serverTimestamp()
+        });
+        
+        showNotification("Porofo nalefa! Ny mpitantana dia handinika azy.", "success");
+        
+        // Reset form and close modal
+        e.target.reset();
+        bootstrap.Modal.getInstance(document.getElementById('proofModal')).hide();
+      } catch (error) {
+        showNotification("Erreur lors de l'envoi de la preuve: " + error.message, "danger");
+      }
+    });
+
+    window.openProofModal = id => {
+      document.getElementById('taskIdHidden').value = id;
+      new bootstrap.Modal(document.getElementById('proofModal')).show();
+    };
+
+    // --- Section Publication ---
+    async function loadPublications() {
+      try {
+        const list = document.getElementById('publicationList');
+        list.innerHTML = '';
+        
+        const q = query(collection(db,'tasks'), where('publisher','==',userId));
+        const snap = await getDocs(q);
+        
+        if (snap.empty) {
+          list.innerHTML = `
+            <div class="col-12">
+              <div class="empty-state">
+                <i class="fas fa-bullhorn"></i>
+                <p>Vous n'avez publié aucune tâche</p>
+              </div>
+            </div>
+          `;
+          return;
+        }
+        
+        list.innerHTML = '';
+        snap.forEach(docSnap => {
+          const d = docSnap.data();
+          const el = document.createElement('div');
+          el.className = 'col-md-6 mb-3';
+          
+          let icon = '';
+          let typeText = '';
+          
+          if (d.taskType === 'social') {
+            switch(d.socialMedia) {
+              case 'facebook': 
+                icon = '<i class="fab fa-facebook social-icon facebook"></i>';
+                typeText = 'Réseau social: Facebook';
+                break;
+              case 'twitter': 
+                icon = '<i class="fab fa-twitter social-icon twitter"></i>';
+                typeText = 'Réseau social: Twitter';
+                break;
+              case 'instagram': 
+                icon = '<i class="fab fa-instagram social-icon instagram"></i>';
+                typeText = 'Réseau social: Instagram';
+                break;
+              case 'telegram': 
+                icon = '<i class="fab fa-telegram social-icon telegram"></i>';
+                typeText = 'Réseau social: Télégramme';
+                break;
+            }
+          } else if (d.taskType === 'website') {
+            icon = '<i class="fas fa-globe social-icon website"></i>';
+            typeText = 'Inscription site web';
+          }
+          
+          el.innerHTML = `
+            <div class="card task-card">
+              <div class="card-body">
+                <h6>${icon} ${d.description}</h6>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                  <span class="badge bg-warning">${d.budget} Ar</span>
+                  <span class="badge bg-success">Active</span>
+                </div>
+                <div class="mt-2 small">${typeText}</div>
+                <div class="mt-2">
+                  <a href="${d.url}" target="_blank" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-external-link-alt me-1"></i> Voir la tâche
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+          list.appendChild(el);
+        });
+      } catch (error) {
+        console.error("Error loading publications:", error);
+      }
+    }
+
+    document.getElementById('publishForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const desc = document.getElementById('pubDescription').value;
+      const budget = parseInt(document.getElementById('pubBudget').value);
+      const url = document.getElementById('pubURL').value;
+      const cond = document.getElementById('pubConditions').value;
+      const taskType = document.getElementById('taskType').value;
+      const socialMedia = document.getElementById('socialMedia').value;
+      
+      if (budget < 50) {
+        showNotification('Budget ≥ 50 Ar', 'warning');
+        return;
+      }
+      
+      if (!taskType) {
+        showNotification('Sélectionnez un type de tâche', 'warning');
+        return;
+      }
+      
+      if (taskType === 'social' && !socialMedia) {
+        showNotification('Sélectionnez un réseau social', 'warning');
+        return;
+      }
+      
+      try {
+        // Vérifier le solde de dépôt
+        const userRef = doc(db, "users", userId);
+        const userSnap = await getDoc(userRef);
+        const userData = userSnap.data();
+        
+        if (userData.depot < budget) {
+          showNotification('Solde de dépôt insuffisant', 'warning');
+          return;
+        }
+        
+        // Déduire le budget du solde de dépôt
+        await updateDoc(userRef, {
+          depot: userData.depot - budget
+        });
+        
+        // Créer la tâche
+        await addDoc(collection(db,'tasks'),{
+          publisher: userId,
+          publisherName: userName,
+          description: desc,
+          budget,
+          url,
+          cond,
+          taskType,
+          socialMedia: taskType === 'social' ? socialMedia : '',
+          status: 'active',
+          createdAt: serverTimestamp()
+        });
+        
+        showNotification('Asa navoaka!', 'success');
+        loadPublications();
+        loadBalances();
+        
+        // Reset form
+        e.target.reset();
+        socialMediaContainer.style.display = 'none';
+      } catch (error) {
+        showNotification("Erreur lors de la publication: " + error.message, 'danger');
+      }
+    });
+
+    // --- Section Admin ---
+    async function loadAdminPanel() {
+      await loadRequests('depot_requests','depotList','depot');
+      await loadRequests('retrait_requests','retraitList','retrait');
+      await loadRequests('submissions','submissionList','proof');
+    }
+    
+    async function loadRequests(col, container, type) {
+      try {
+        const c = document.getElementById(container);
+        c.innerHTML = '';
+        
+        const q = query(collection(db, col), where('status','==','en attente'));
+        const snap = await getDocs(q);
+        
+        if (snap.empty) {
+          c.innerHTML = `
+            <tr>
+              <td colspan="5" class="text-center py-4">
+                <div class="empty-state py-0">
+                  <i class="fas fa-inbox"></i>
+                  <p>Aucune demande en attente</p>
+                </div>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+        
+        snap.forEach(docSnap => {
+          const d = docSnap.data();
+          const date = d.createdAt ? new Date(d.createdAt.seconds * 1000).toLocaleString() : 'Date inconnue';
+          const el = document.createElement('tr');
+          
+          if (type === 'depot') {
+            el.innerHTML = `
+              <td>${d.userName || d.userId}</td>
+              <td>${d.montant} Ar</td>
+              <td>${d.method}</td>
+              <td>${date}</td>
+              <td class="admin-actions">
+                <button class='btn btn-success btn-sm me-1' onclick='confirmAction("${col}","${docSnap.id}","${type}",${JSON.stringify(d)})'>
+                  <i class="fas fa-check me-1"></i>
+                </button>
+                <button class='btn btn-danger btn-sm' onclick='cancelAction("${col}","${docSnap.id}")'>
+                  <i class="fas fa-times me-1"></i>
+                </button>
+              </td>
+            `;
+          } else if (type === 'retrait') {
+            el.innerHTML = `
+              <td>${d.nom || d.userName || d.userId}</td>
+              <td>${d.montant} Ar</td>
+              <td>${d.frais || 0} Ar</td>
+              <td>${date}</td>
+              <td class="admin-actions">
+                <button class='btn btn-success btn-sm me-1' onclick='confirmAction("${col}","${docSnap.id}","${type}",${JSON.stringify(d)})'>
+                  <i class="fas fa-check me-1"></i>
+                </button>
+                <button class='btn btn-danger btn-sm' onclick='cancelAction("${col}","${docSnap.id}")'>
+                  <i class="fas fa-times me-1"></i>
+                </button>
+              </td>
+            `;
+          } else if (type === 'proof') {
+            el.innerHTML = `
+              <td>${d.userName || d.userId}</td>
+              <td>${d.taskId || 'Inconnue'}</td>
+              <td>${date}</td>
+              <td class="admin-actions">
+                <button class='btn btn-success btn-sm me-1' onclick='confirmAction("${col}","${docSnap.id}","${type}",${JSON.stringify(d)})'>
+                  <i class="fas fa-check me-1"></i>
+                </button>
+                <button class='btn btn-danger btn-sm' onclick='cancelAction("${col}","${docSnap.id}")'>
+                  <i class="fas fa-times me-1"></i>
+                </button>
+              </td>
+            `;
+          }
+          
+          c.appendChild(el);
+        });
+      } catch (error) {
+        console.error(`Error loading ${col}:`, error);
+      }
+    }
+
+    window.confirmAction = async (col, id, type, d) => {
+      try {
+        await updateDoc(doc(db, col, id), {status: 'confirmé'});
+        
+        const uRef = doc(db, 'users', d.userId);
+        const uSnap = await getDoc(uRef);
+        const u = uSnap.exists() ? uSnap.data() : {gain: 0, depot: 0};
+        
+        if (type === 'depot') {
+          await updateDoc(uRef, {depot: u.depot + d.montant});
+          showNotification('Dépôt confirmé!', 'success');
+        } else if (type === 'retrait') {
+          await updateDoc(uRef, {depot: u.depot - (d.montant + d.frais)});
+          showNotification('Retrait confirmé!', 'success');
+        } else if (type === 'proof') {
+          // Récupérer la tâche pour obtenir le budget
+          const taskRef = doc(db, 'tasks', d.taskId);
+          const taskSnap = await getDoc(taskRef);
+          if (!taskSnap.exists()) {
+            throw new Error('Tâche introuvable');
+          }
+          const taskData = taskSnap.data();
+          const taskBudget = taskData.budget;
+          
+          // Mettre à jour le solde de gains
+          await updateDoc(uRef, {gain: u.gain + taskBudget});
+          
+          // Ajouter la tâche complétée à la liste de l'utilisateur
+          const completedTasks = u.completedTasks || [];
+          if (!completedTasks.includes(d.taskId)) {
+            completedTasks.push(d.taskId);
+            await updateDoc(uRef, {completedTasks});
+          }
+          
+          showNotification(`Tâche confirmée! ${taskBudget} Ar crédités.`, 'success');
+        }
+        
+        loadAdminPanel();
+        loadBalances();
+      } catch (error) {
+        showNotification("Erreur lors de la confirmation: " + error.message, 'danger');
+      }
+    };
+
+    window.cancelAction = async (col, id) => {
+      try {
+        await deleteDoc(doc(db, col, id));
+        showNotification('Demande annulée', 'info');
+        loadAdminPanel();
+      } catch (error) {
+        showNotification("Erreur lors de l'annulation: " + error.message, 'danger');
+      }
+    };
+
+    // Setup real-time listeners for balances
+    function setupRealtimeListeners() {
+      const userRef = doc(db, "users", userId);
+      
+      onSnapshot(userRef, (doc) => {
+        if (doc.exists()) {
+          const data = doc.data();
+          document.getElementById("gainBalance").textContent = data.gain + " Ar";
+          document.getElementById("depositBalance").textContent = data.depot + " Ar";
+        }
+      });
+    }
+
+    // Fonctions pour le parrainage
+    function copyReferralLink() {
+      const link = document.getElementById('referralLink');
+      link.select();
+      document.execCommand('copy');
+      showNotification('Lien copié dans le presse-papiers!', 'success');
+    }
+
+    function shareReferral() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Microtâche Mila Vola',
+          text: 'Rejoignez la plateforme Microtâche Mila Vola et gagnez de l\'argent en réalisant des microtâches!',
+          url: document.getElementById('referralLink').value
+        })
+        .catch(error => console.log('Erreur de partage:', error));
+      } else {
+        copyReferralLink();
+      }
+    }
+
+    // Fonction d'affichage de notification
+    function showNotification(message, type) {
+      const notificationArea = document.getElementById('notificationArea');
+      const notification = document.createElement('div');
+      notification.className = `notification bg-${type === 'success' ? 'success' : type === 'warning' ? 'warning' : 'danger'}`;
+      notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'}"></i>
+        <span>${message}</span>
+      `;
+      
+      notificationArea.appendChild(notification);
+      
+      // Supprimer la notification après 3 secondes
+      setTimeout(() => {
+        notification.remove();
+      }, 3000);
+    }
+
+    // Vérifier le paramètre de référence dans l'URL
+    function checkReferral() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const ref = urlParams.get('ref');
+      if (ref) {
+        document.getElementById('securityCode').value = ref;
+        showNotification("Vous avez été invité par un parrain! Utilisez le code d'accès pour bénéficier des avantages.", "info");
+      }
+    }
+
+    // Vérifier le statut de connexion au chargement
+    checkLoginStatus();
+    checkReferral();
   </script>
 </body>
-  </html>
+</html>
